@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HARISH M S - Portfolio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  </head>
+  <body>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="container-xl">
+        <div class="nav-content">
+          <a href="#" class="nav-logo">HARISH M S</a>
+          <ul class="nav-links">
+            <li><a href="#hero" class="nav-link">Home</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#skills" class="nav-link">Skills</a></li>
+            <li><a href="#projects" class="nav-link">Projects</a></li>
+            <li><a href="#internship" class="nav-link">Internship</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- 1. HERO SECTION - HARISH M S with tagline -->
+    <section id="hero" class="hero-section">
+      <div class="container-xl fade-in">
+        <div class="hero-content">
+          <h1 class="hero-title">HARISH M S</h1>
+          <h2 class="hero-subtitle">Python Developer | Machine Learning Engineer | IoT Systems Specialist</h2>
+          <p class="hero-description">Building intelligent solutions through data-driven applications and embedded systems.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. ABOUT & EDUCATION SECTION -->
+    <section id="about" class="about-section">
+      <div class="container-xl">
+        <h2 class="section-title fade-in">About & Education</h2>
+        <div class="about-grid">
+          <!-- About Column -->
+          <div class="about-column">
+            <div class="fade-in">
+              <h3 class="about-subtitle">About</h3>
+              <p class="body-text">
+                I'm a dedicated software developer and engineer with expertise in Python, Machine Learning, and IoT systems. 
+                I thrive on building innovative solutions that combine cutting-edge technology with practical applications. 
+                My passion lies in leveraging AI and embedded systems to solve real-world problems.
+              </p>
+            </div>
+          </div>
+
+          <!-- Education Column -->
+          <div class="about-column">
+            <div class="fade-in">
+              <h3 class="about-subtitle">Education</h3>
+              {% for edu in education %}
+              <div class="edu-item">
+                <div class="edu-school">{{ edu.school }}</div>
+                <div class="edu-degree">{{ edu.degree }}</div>
+                <div class="edu-period">{{ edu.period }}</div>
+                <div class="meta-text">{{ edu.details }}</div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. SKILLS SECTION -->
+    <section id="skills" class="work-section">
+    <div class="container-xl">
+        <h2 class="section-title fade-in">Skills</h2>
+        <div class="skills-grid fade-in">
+        <div class="skill-category">
+            <h3 class="about-subtitle">Languages</h3>
+            <div class="body-text">
+            {% for skill in skills.languages %}
+            <span class="skill-item">{{ skill }}</span>
+            {% endfor %}
+            </div>
+        </div>
+        <div class="skill-category">
+            <h3 class="about-subtitle">Web Development</h3>
+            <div class="body-text">
+            {% for skill in skills.web %}
+            <span class="skill-item">{{ skill }}</span>
+            {% endfor %}
+            </div>
+        </div>
+        <div class="skill-category">
+            <h3 class="about-subtitle">Data Science</h3>
+            <div class="body-text">
+            {% for skill in skills.data_science %}
+            <span class="skill-item">{{ skill }}</span>
+            {% endfor %}
+            </div>
+        </div>
+        <div class="skill-category">
+            <h3 class="about-subtitle">Tools & Platforms</h3>
+            <div class="body-text">
+            {% for skill in skills.tools %}
+            <span class="skill-item">{{ skill }}</span>
+            {% endfor %}
+            </div>
+        </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- 4. PROJECTS SECTION -->
+    <section id="projects" class="work-section">
+      <div class="container-xl">
+        <h2 class="section-title fade-in">Projects</h2>
+        <div class="projects-list">
+          {% for project in projects %}
+          <a href="{{ project.link }}" class="project-item fade-in">
+            <div class="project-header">
+              <div>
+                <h3 class="project-title">{{ project.title }}</h3>
+                <p class="project-description">{{ project.description }}</p>
+                <div class="project-tech">
+                  {% for tech in project.tech %}
+                  <span class="tech-tag">{{ tech }}</span>
+                  {% endfor %}
+                </div>
+              </div>
+              <span class="project-year">{{ project.year }}</span>
+            </div>
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. INTERNSHIP SECTION -->
+    <section id="internship" class="about-section">
+      <div class="container-xl">
+        <h2 class="section-title fade-in">Internship</h2>
+        <div class="about-grid">
+          <div class="about-column fade-in">
+            {% for exp in experience %}
+            <div class="exp-item">
+              <div class="exp-company">{{ exp.company }}</div>
+              <div class="exp-position">{{ exp.position }}</div>
+              <div class="exp-location">{{ exp.location }} • {{ exp.period }}</div>
+              <ul class="exp-highlights">
+                {% for highlight in exp.highlights %}
+                <li>{{ highlight }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+            {% endfor %}
+          </div>
+          <div class="about-column"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. CONTACT SECTION -->
+    <section id="contact" class="contact-section">
+      <div class="container-xl">
+        <h2 class="section-title fade-in">Contact</h2>
+        <div class="contact-grid">
+          <div class="contact-column">
+            <div class="contact-item fade-in">
+              <label class="contact-label">Email</label>
+              <a href="javascript:void(0);" onclick="copyEmail('{{ contacts.email }}')" class="contact-link">
+                {{ contacts.email }}
+              </a>
+            </div>
+            <div class="contact-item fade-in">
+              <label class="contact-label">Phone</label>
+              <a href="tel:{{ contacts.phone }}" class="contact-link">
+                {{ contacts.phone }}
+              </a>
+            </div>
+          </div>
+          <div class="contact-column">
+            <div class="contact-item fade-in">
+              <label class="contact-label">Social Links</label>
+              <a href="{{ contacts.linkedin }}" target="_blank" class="contact-link">LinkedIn</a>
+              <a href="{{ contacts.github }}" target="_blank" class="contact-link">GitHub</a>
+              <a href="{{ contacts.leetcode }}" target="_blank" class="contact-link">LeetCode</a>
+              <a href="{{ contacts.website }}" target="_blank" class="contact-link">Website</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container-xl">
+        <p class="footer-text">© 2025 Harish M S. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>
